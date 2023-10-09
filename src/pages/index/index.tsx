@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { router } from '@/kuririn-react-router'
+import { router } from 'kuririn-react-router'
 
 const Index: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('')

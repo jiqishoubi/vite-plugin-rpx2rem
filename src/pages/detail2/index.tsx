@@ -1,5 +1,5 @@
 import React from 'react'
-import { router } from '@/kuririn-react-router'
+import { router } from 'kuririn-react-router'
 
 const Index: React.FC = () => {
   return (
