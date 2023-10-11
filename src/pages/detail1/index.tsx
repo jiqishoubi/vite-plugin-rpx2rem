@@ -1,36 +1,18 @@
-import React from 'react'
 import { router } from 'kuririn-react-router'
+import React from 'react'
 
 const Index: React.FC = () => {
   return (
     <>
-      detail1
-      <div>
-        <button
-          onClick={() => {
-            router.push('/detail2')
-          }}
-        >
-          go detail2
-        </button>
-      </div>
-      <div>
-        <button
-          onClick={() => {
-            router.back()
-          }}
-        >
-          back
-        </button>
-      </div>
-      <div
-        style={{
-          height: 8000,
-          backgroundColor: 'ActiveBorder',
+      <h1>detail1 page</h1>
+
+      <button
+        onClick={() => {
+          router.back()
         }}
       >
-        height
-      </div>
+        go back
+      </button>
     </>
   )
 }
