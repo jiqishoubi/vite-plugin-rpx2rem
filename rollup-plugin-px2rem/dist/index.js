@@ -1,6 +1,4 @@
-import { Plugin } from 'rollup'
-
-export default function rollupPluginPx2Rem(): any {
+function rollupPluginPx2Rem() {
   return {
     name: 'rollup-plugin-px2rem',
     // buildStart() {
@@ -10,7 +8,7 @@ export default function rollupPluginPx2Rem(): any {
     // resolveId(source: string, importer: string | undefined) {
     //   return source
     // },
-    transform(code: string, id: string) {
+    transform(code, id) {
       const item = new ModuledItem(id, code)
       const newCode = item.transformContent()
       if (newCode !== false) {
@@ -22,17 +20,16 @@ export default function rollupPluginPx2Rem(): any {
     // buildEnd() {
     //   console.log('buildEnd')
     // },
-  } as Plugin
+  }
 }
-
 class ModuledItem {
-  path: string
-  content: string
-  constructor(id: string, code: string) {
+  path
+  content
+  constructor(id, code) {
     this.path = id
     this.content = code
   }
-  transformContent(): false | string {
+  transformContent() {
     // css less scss
     if (this.path.endsWith('.css') || this.path.endsWith('.less') || this.path.endsWith('.scss')) {
       const newContent = this.content.replace(/(\d+)px/g, '$1rem')
@@ -41,9 +38,10 @@ class ModuledItem {
     return false
   }
 }
-
-export function setHtmlFontSize(designWidth: number = 750) {
+function setHtmlFontSize(designWidth = 750) {
   const width = (document.body && document.body.clientWidth) || (document.documentElement && document.documentElement.clientWidth) || (window.screen && window.screen.availWidth)
   // document.getElementsByTagName('html')[0].style.fontSize = (width / designWidth) * 100 + 'px'
   document.getElementsByTagName('html')[0].style.fontSize = width / designWidth + 'px'
 }
+
+export { rollupPluginPx2Rem as default, setHtmlFontSize }
