@@ -9,6 +9,15 @@ const Index: React.FC = () => {
 
       <div className={styles.red}>test css modules</div>
 
+      <div
+        className={styles.test_size}
+        style={{
+          fontSize: 20,
+        }}
+      >
+        test px rem
+      </div>
+
       <button
         onClick={() => {
           router.push('/detail1')
