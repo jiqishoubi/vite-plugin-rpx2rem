@@ -50,19 +50,20 @@ function _match(t, id) {
   }
 }
 function handleReplace(code, id) {
-  console.log('🚀 ~ id:', id)
-  // // css less scss
-  // if (this.path.endsWith('.css') || this.path.endsWith('.less') || this.path.endsWith('.scss')) {
-  //   const newContent = this.content.replace(/(\d+)px/g, '$1rem')
-  //   return newContent
-  // }
-  // // js jsx ts tsx
-  // else if (this.path.endsWith('.js') || this.path.endsWith('.jsx') || this.path.endsWith('.ts') || this.path.endsWith('.tsx')) {
-  //   // todo
-  //   // console.log('🚀 ~ this.path', this.path)
-  //   // console.log('🚀 ~ this.content', this.content)
-  //   return this.content
-  // }
+  // css less scss
+  if (id.endsWith('.css') || id.endsWith('.less') || id.endsWith('.scss')) {
+    const code2 = code.replace(/(\d+)px/g, '$1rem')
+    return code2
+  }
+  // jsx tsx
+  else if (id.endsWith('.jsx') || id.endsWith('.tsx')) {
+    console.log('🚀 ~ id', id)
+    console.log('🚀 ~ code', code)
+    // return this.content
+  }
+  // js ts
+  // todo...
+  // default
   return code
 }
 
