@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/jiqishoubi/vite-plugin-rpx2rem"
   },
-  "description": "A Vite plugin for converts px(rpx) to rem.",
+  "description": "A Vite plugin for converts px(rpx) to rem in css/less/js/jsx files",
   "scripts": {
     "dev": "vite",
     "prepare": "husky install",

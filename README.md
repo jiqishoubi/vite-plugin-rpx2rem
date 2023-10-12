@@ -72,17 +72,10 @@ const Dom = (
 
 ## Options
 
-| 属性    | 说明 | 类型                   | 默认值 |
-| ------- | ---- | ---------------------- | ------ |
-| include |      | `(RegExp \| string)[]` | -      |
-| exclude |      | `(RegExp \| string)[]` | -      |
-
-```ts
-export interface IRpx2RemOptions {
-  include?: (RegExp | string)[]
-  exclude?: (RegExp | string)[]
-}
-```
+| property | 说明 | 类型                   | 默认值 |
+| -------- | ---- | ---------------------- | ------ |
+| include  |      | `(RegExp \| string)[]` | -      |
+| exclude  |      | `(RegExp \| string)[]` | -      |
 
 ## Remark
 
