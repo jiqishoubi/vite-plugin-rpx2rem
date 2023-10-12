@@ -1,5 +1,5 @@
 {
-  "name": "react-pure-h5-template",
+  "name": "vite-plugin-rpx2rem",
   "version": "0.0.2",
   "type": "module",
   "scripts": {
