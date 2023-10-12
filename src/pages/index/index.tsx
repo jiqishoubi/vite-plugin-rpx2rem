@@ -6,8 +6,6 @@ const Index: React.FC = () => {
     <>
       <h1>index page</h1>
 
-      <div className={styles.red}>test css modules</div>
-
       <div
         className={styles.test_size}
         style={{

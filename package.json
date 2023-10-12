@@ -2,6 +2,13 @@
   "name": "vite-plugin-rpx2rem",
   "version": "1.0.1",
   "type": "module",
+  "main": "./vite-plugin-rpx2rem/dist/index.js",
+  "types": "./vite-plugin-rpx2rem/dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jiqishoubi/vite-plugin-rpx2rem"
+  },
+  "description": "A Vite plugin for converts px(rpx) to rem.",
   "scripts": {
     "dev": "vite",
     "prepare": "husky install",
@@ -35,5 +42,13 @@
   "files": [
     "vite-plugin-rpx2rem/dist"
   ],
-  "keywords": []
+  "keywords": [
+    "rem",
+    "transform",
+    "rpx",
+    "px",
+    "mobile",
+    "H5",
+    "converts"
+  ]
 }
