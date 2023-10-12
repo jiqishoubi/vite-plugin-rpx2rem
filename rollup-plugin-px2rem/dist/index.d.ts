@@ -7,10 +7,10 @@
  * }
  */
 export interface IRollupPluginPx2RemOptions {
-  additionalTest?: RegExp[]
-  include?: (RegExp | string)[]
-  exclude?: (RegExp | string)[]
+    additionalTest?: RegExp[];
+    include?: (RegExp | string)[];
+    exclude?: (RegExp | string)[];
 }
-export declare const defaultOptions: IRollupPluginPx2RemOptions
-export default function rollupPluginPx2Rem(options?: IRollupPluginPx2RemOptions): any
-export declare function setHtmlFontSize(designWidth?: number): void
+export declare const defaultOptions: IRollupPluginPx2RemOptions;
+export default function rollupPluginPx2Rem(options?: IRollupPluginPx2RemOptions): any;
+export declare function setHtmlFontSize(designWidth?: number): void;

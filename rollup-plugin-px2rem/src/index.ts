@@ -54,6 +54,8 @@ export default function rollupPluginPx2Rem(options?: IRollupPluginPx2RemOptions)
       }
       return code
     },
+    // vite plugin hooks
+    enforce: 'pre',
   } as Plugin
 }
 
