@@ -1,0 +1,17 @@
+{
+  "name": "rollup-plugin-px2rem",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^4.0.2"
+  }
+}
