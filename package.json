@@ -49,6 +49,7 @@
     "px",
     "mobile",
     "H5",
-    "converts"
+    "converts",
+    "vite-plugin"
   ]
 }
