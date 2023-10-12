@@ -6,7 +6,8 @@
     "dev": "vite",
     "prepare": "husky install",
     "prettier-all": "prettier --write '**/*.{js,jsx,ts,tsx,vue,css,less,scss,md,json}'",
-    "pub": "cd vite-plugin-rpx2rem && npm run build && cd .. && npm version patch && npm publish"
+    "build": "cd vite-plugin-rpx2rem && npm run build",
+    "pub": "npm version patch && npm publish"
   },
   "dependencies": {
     "@types/node": "^20.8.3",
