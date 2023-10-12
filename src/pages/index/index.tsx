@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { router } from 'kuririn-react-router'
 import styles from './index.module.less'
 
 const Index: React.FC = () => {
@@ -17,14 +16,6 @@ const Index: React.FC = () => {
       >
         test px rem
       </div>
-
-      <button
-        onClick={() => {
-          router.push('/detail1')
-        }}
-      >
-        push detail1
-      </button>
     </>
   )
 }
