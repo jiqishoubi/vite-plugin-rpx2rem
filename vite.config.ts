@@ -1,4 +1,4 @@
-import { defineConfig, PluginOption } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import rollupPluginPx2Rem from './rollup-plugin-px2rem'
@@ -13,7 +13,12 @@ const BASE_HOST = (() => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), rollupPluginPx2Rem()],
+  plugins: [
+    react(),
+    rollupPluginPx2Rem({
+      include: [path.resolve(__dirname, 'src')],
+    }),
+  ],
   server: {
     port: 6001,
   },
