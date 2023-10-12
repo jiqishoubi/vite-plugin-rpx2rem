@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import rollupPluginPx2Rem from './rollup-plugin-px2rem'
+import rpx2rem from './vite-plugin-rpx2rem'
 
 // 这里设置请求域名
 const BASE_HOST = (() => {
@@ -14,7 +14,7 @@ const BASE_HOST = (() => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    rollupPluginPx2Rem({
+    rpx2rem({
       include: [path.resolve(__dirname, 'src')],
     }), // 这个要放在 react() 前面
     react(),

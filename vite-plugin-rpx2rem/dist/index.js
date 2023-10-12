@@ -1,19 +1,9 @@
 const defaultOptions = {
     exclude: [/node_modules/],
 };
-function rollupPluginPx2Rem(options) {
-    const test = (() => {
-        const defaultTest = [/\.css$/, /\.less$/, /\.scss$/, /\.jsx$/, /\.tsx$/]; // these are must be included
-        if (options?.additionalTest) {
-            return [...defaultTest, ...options.additionalTest];
-        }
-        else {
-            return defaultTest;
-        }
-    })();
+function rpx2rem(options) {
     const include = (options?.include || []);
     const exclude = (options?.exclude || defaultOptions.exclude);
-    // console.log('🚀 ~ test', test)
     // console.log('🚀 ~ include', include)
     // console.log('🚀 ~ exclude', exclude)
     return {
@@ -26,11 +16,8 @@ function rollupPluginPx2Rem(options) {
             // 1. judge include and exclude
             if (include.some((t) => _match(t, id)) && //
                 !exclude.some((t) => _match(t, id))) {
-                // 2. judge test,file type
-                if (test.some((t) => t.test(id))) {
-                    // 3. replace
-                    return handleReplace(code, id);
-                }
+                // next. replace
+                return handleReplace(code);
             }
             return code;
         },
@@ -51,22 +38,9 @@ function _match(t, id) {
         return t.test(id);
     }
 }
-function handleReplace(code, id) {
-    // css less scss
-    if (id.endsWith('.css') || id.endsWith('.less') || id.endsWith('.scss')) {
-        const code2 = code.replace(/(\d+)px/g, '$1rem');
-        return code2;
-    }
-    // jsx tsx
-    else if (id.endsWith('.jsx') || id.endsWith('.tsx')) {
-        console.log('🚀 ~ id', id);
-        console.log('🚀 ~ code', code);
-        // return this.content
-    }
-    // js ts
-    // todo...
-    // default
-    return code;
+function handleReplace(code) {
+    // all rpx to rem
+    return code.replace(/rpx/g, 'rem');
 }
 
-export { rollupPluginPx2Rem as default, defaultOptions, setHtmlFontSize };
+export { rpx2rem as default, defaultOptions, setHtmlFontSize };

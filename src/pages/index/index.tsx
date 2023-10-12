@@ -12,7 +12,7 @@ const Index: React.FC = () => {
       <div
         className={styles.test_size}
         style={{
-          fontSize: 20,
+          fontSize: '20rpx',
         }}
       >
         test px rem

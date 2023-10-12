@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-px2rem",
+  "name": "vite-plugin-rpx2rem",
   "version": "1.0.0",
   "description": "",
   "type": "module",

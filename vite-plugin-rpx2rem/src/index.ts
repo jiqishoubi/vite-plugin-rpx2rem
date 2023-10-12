@@ -3,34 +3,23 @@ import { Plugin } from 'rollup'
 /**
  * @example
  * {
- *  additionalTest: [/\.js$/], // default is [/\.css$/, /\.less$/, /\.scss$/, /\.jsx$/, /\.tsx$/] // 一般不需要配置
  *  include: [path.resolve(__dirname, 'src')],
- *  exclude: [/node_modules/],
+ *  exclude: [/node_modules/], // default value is [/node_modules/]
  * }
  */
-export interface IRollupPluginPx2RemOptions {
-  additionalTest?: RegExp[]
+export interface IRpx2RemOptions {
   include?: (RegExp | string)[]
   exclude?: (RegExp | string)[]
 }
 
-export const defaultOptions: IRollupPluginPx2RemOptions = {
+export const defaultOptions: IRpx2RemOptions = {
   exclude: [/node_modules/],
 }
 
-export default function rollupPluginPx2Rem(options?: IRollupPluginPx2RemOptions): any {
-  const test = (() => {
-    const defaultTest = [/\.css$/, /\.less$/, /\.scss$/, /\.jsx$/, /\.tsx$/] // these are must be included
-    if (options?.additionalTest) {
-      return [...defaultTest, ...options.additionalTest]
-    } else {
-      return defaultTest
-    }
-  })()
+export default function rpx2rem(options?: IRpx2RemOptions): any {
   const include = (options?.include || []) as (RegExp | string)[]
   const exclude = (options?.exclude || defaultOptions.exclude) as (RegExp | string)[]
 
-  // console.log('🚀 ~ test', test)
   // console.log('🚀 ~ include', include)
   // console.log('🚀 ~ exclude', exclude)
 
@@ -46,11 +35,8 @@ export default function rollupPluginPx2Rem(options?: IRollupPluginPx2RemOptions)
         include.some((t) => _match(t, id)) && //
         !exclude.some((t) => _match(t, id))
       ) {
-        // 2. judge test,file type
-        if (test.some((t) => t.test(id))) {
-          // 3. replace
-          return handleReplace(code, id)
-        }
+        // next. replace
+        return handleReplace(code)
       }
       return code
     },
@@ -73,22 +59,7 @@ function _match(t: string | RegExp, id: string): boolean {
   }
 }
 
-function handleReplace(code: string, id: string) {
-  // css less scss
-  if (id.endsWith('.css') || id.endsWith('.less') || id.endsWith('.scss')) {
-    const code2 = code.replace(/(\d+)px/g, '$1rem')
-    return code2
-  }
-  // jsx tsx
-  else if (id.endsWith('.jsx') || id.endsWith('.tsx')) {
-    console.log('🚀 ~ id', id)
-    console.log('🚀 ~ code', code)
-    // return this.content
-  }
-
-  // js ts
-  // todo...
-
-  // default
-  return code
+function handleReplace(code: string) {
+  // all rpx to rem
+  return code.replace(/rpx/g, 'rem')
 }
