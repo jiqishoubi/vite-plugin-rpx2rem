@@ -20,7 +20,7 @@ setHtmlFontSize in your entry file, and pass the design width of your project
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.less'
-import { setHtmlFontSize } from '../vite-plugin-rpx2rem'
+import { setHtmlFontSize } from 'vite-plugin-rpx2rem'
 
 setHtmlFontSize(750) // 750 is the design width of your project
 
@@ -32,7 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(<App />)
 Note that it should be placed on top of other plugins, so that it occurs before Babel compilation
 
 ```ts
-import rpx2rem from './vite-plugin-rpx2rem'
+import rpx2rem from 'vite-plugin-rpx2rem'
 
 const config = {
   plugins: [
