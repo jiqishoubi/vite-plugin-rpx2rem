@@ -1,45 +1,67 @@
 import { Plugin } from 'rollup'
 
-export default function rollupPluginPx2Rem(): any {
+/**
+ * @example
+ * {
+ *  additionalTest: ['.js'],
+ *  include: ['src/**'],
+ *  exclude: ['node_modules/**', 'dist/**'],
+ * }
+ */
+export interface IRollupPluginPx2RemOptions {
+  additionalTest?: string[]
+  include?: string[]
+  exclude?: string[]
+}
+
+export const defaultOptions: IRollupPluginPx2RemOptions = {
+  include: ['src/**'],
+  exclude: ['node_modules/**'],
+}
+
+export default function rollupPluginPx2Rem(options?: IRollupPluginPx2RemOptions): any {
+  const test = (() => {
+    const defaultTest = [/\.css$/, /\.less$/, /\.scss$/, /\.jsx$/, /\.tsx$/]
+    if (options?.additionalTest) {
+      return [...defaultTest, ...options.additionalTest]
+    } else {
+      return defaultTest
+    }
+  })()
+  const include = (options?.include || defaultOptions.include) as string[]
+  const exclude = (options?.exclude || defaultOptions.exclude) as string[]
+
+  console.log('🚀 ~ test', test)
+  console.log('🚀 ~ include', include)
+  console.log('🚀 ~ exclude', exclude)
+
   return {
     name: 'rollup-plugin-px2rem',
-    // buildStart() {
-    //   console.log('buildStart')
-    // },
     // if cli is vite, this hook will not be called, because vite has its own resolve plugin
     // resolveId(source: string, importer: string | undefined) {
     //   return source
     // },
     transform(code: string, id: string) {
-      const item = new ModuledItem(id, code)
-      const newCode = item.transformContent()
-      if (newCode !== false) {
-        return newCode
-      } else {
+      if (include.some((item) => id.includes(item)) && !exclude.some((item) => id.includes(item))) {
+        // todo
         return code
       }
-    },
-    // buildEnd() {
-    //   console.log('buildEnd')
-    // },
-  } as Plugin
-}
 
-class ModuledItem {
-  path: string
-  content: string
-  constructor(id: string, code: string) {
-    this.path = id
-    this.content = code
-  }
-  transformContent(): false | string {
-    // css less scss
-    if (this.path.endsWith('.css') || this.path.endsWith('.less') || this.path.endsWith('.scss')) {
-      const newContent = this.content.replace(/(\d+)px/g, '$1rem')
-      return newContent
-    }
-    return false
-  }
+      // // css less scss
+      // if (this.path.endsWith('.css') || this.path.endsWith('.less') || this.path.endsWith('.scss')) {
+      //   const newContent = this.content.replace(/(\d+)px/g, '$1rem')
+      //   return newContent
+      // }
+      // // js jsx ts tsx
+      // else if (this.path.endsWith('.js') || this.path.endsWith('.jsx') || this.path.endsWith('.ts') || this.path.endsWith('.tsx')) {
+      //   // todo
+      //   // console.log('🚀 ~ this.path', this.path)
+      //   // console.log('🚀 ~ this.content', this.content)
+      //   return this.content
+      // }
+      return code
+    },
+  } as Plugin
 }
 
 export function setHtmlFontSize(designWidth: number = 750) {
