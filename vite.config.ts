@@ -14,10 +14,10 @@ const BASE_HOST = (() => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
     rollupPluginPx2Rem({
       include: [path.resolve(__dirname, 'src')],
-    }),
+    }), // 这个要放在 react() 前面
+    react(),
   ],
   server: {
     port: 6001,
