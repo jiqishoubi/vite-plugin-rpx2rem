@@ -39,8 +39,7 @@ function _match(t, id) {
     }
 }
 function handleReplace(code) {
-    // all rpx to rem
-    return code.replace(/rpx/g, 'rem');
+    return code.replace(/rpx(?!2rem)/g, 'rem');
 }
 
 export { rpx2rem as default, defaultOptions, setHtmlFontSize };

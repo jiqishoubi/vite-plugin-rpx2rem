@@ -60,6 +60,5 @@ function _match(t: string | RegExp, id: string): boolean {
 }
 
 function handleReplace(code: string) {
-  // all rpx to rem
-  return code.replace(/rpx/g, 'rem')
+  return code.replace(/rpx(?!2rem)/g, 'rem')
 }
