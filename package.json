@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-rpx2rem",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "./vite-plugin-rpx2rem/dist/index.js",
   "types": "./vite-plugin-rpx2rem/dist/index.d.ts",
