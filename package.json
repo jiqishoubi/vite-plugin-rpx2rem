@@ -1,29 +1,19 @@
 {
   "name": "vite-plugin-rpx2rem",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
     "prepare": "husky install",
     "prettier-all": "prettier --write '**/*.{js,jsx,ts,tsx,vue,css,less,scss,md,json}'",
-    "pub": "npm version patch && npm publish"
+    "pub": "cd vite-plugin-rpx2rem && npm run build && cd .. && npm version patch && npm publish"
   },
   "dependencies": {
-    "@types/history": "^5.0.0",
-    "@types/lodash": "^4.14.199",
     "@types/node": "^20.8.3",
-    "ahooks": "^3.7.8",
-    "axios": "^1.5.1",
     "classnames": "^2.3.2",
-    "dayjs": "^1.11.10",
-    "history": "^5.3.0",
     "husky": "^8.0.3",
-    "kuririn-react-router": "^1.0.3",
     "less": "^4.2.0",
     "lint-staged": "^14.0.1",
-    "lodash": "^4.17.21",
     "mobx": "^6.10.2",
     "mobx-react": "^9.0.1",
     "prettier": "^2.5.1",
